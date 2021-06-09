@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Shop;
 
+use App\Http\Requests\StoreShop;
+
 class ShopController extends Controller
 {
     /**
@@ -34,7 +36,7 @@ class ShopController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreShop $request)
     {
         Shop::create($request->all());
         return redirect()->route('shop.index')->with('success', '新規登録完了しました');
@@ -71,7 +73,7 @@ class ShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreShop $request, $id)
     {
         $update = [
             'name' => $request->name,
